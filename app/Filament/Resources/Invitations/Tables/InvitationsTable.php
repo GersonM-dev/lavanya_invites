@@ -40,7 +40,7 @@ class InvitationsTable
                     ->copyable()
                     ->copyMessage('Link copied to clipboard')
                     ->copyMessageDuration(1500)
-                    ->limit(40)
+                    ->limit(100)
                     ->toggleable()
                     ->searchable(false)
                     ->sortable(false),
