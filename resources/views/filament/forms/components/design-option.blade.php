@@ -20,7 +20,7 @@
 
                 try {
                     $storage = Storage::disk($disk);
-                } catch (\\Throwable $exception) {
+                } catch (\Throwable $exception) {
                     continue;
                 }
 
@@ -28,7 +28,7 @@
                     if ($storage->exists($path)) {
                         return $storage->url($path);
                     }
-                } catch (\\Throwable $exception) {
+                } catch (\Throwable $exception) {
                     continue;
                 }
             }
