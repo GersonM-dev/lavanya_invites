@@ -26,21 +26,6 @@ class InvitationForm
         return $schema
             ->columns(1)
             ->components([
-                Section::make('Invitation Details')
-                    ->schema([
-                        Grid::make(2)
-                            ->schema([
-                                DatePicker::make('wedding_date')
-                                    ->label('Wedding date')
-                                    ->nullable()
-                                    ->live(),
-                                Placeholder::make('slug_preview')
-                                    ->label('Slug')
-                                    ->content(fn (Get $get): string => self::formatSlugPreview($get))
-                                    ->columnSpan(2)
-                                    ->helperText('Final slug is created automatically from the couple names and wedding date.'),
-                            ]),
-                    ]),
 
                 Section::make('Couple')
                     ->columns(2)
@@ -53,16 +38,21 @@ class InvitationForm
                             ->schema(self::personForm()),
                     ]),
 
-                Section::make('Design')
+                Section::make('Invitation Details')
                     ->schema([
-                        Select::make('design_id')
-                            ->label('Design')
-                            ->relationship('design', 'name')
-                            ->searchable()
-                            ->preload()
-                            ->nullable()
-                            ->createOptionForm(self::designForm())
-                            ->editOptionForm(self::designForm()),
+                        Grid::make(2)
+                            ->schema([
+                                DatePicker::make('wedding_date')
+                                    ->label('Wedding date')
+                                    ->columnSpanFull()
+                                    ->nullable()
+                                    ->live(),
+                                Placeholder::make('slug_preview')
+                                    ->label('Slug')
+                                    ->content(fn(Get $get): string => self::formatSlugPreview($get))
+                                    ->columnSpan(2)
+                                    ->helperText('Final slug is created automatically from the couple names and wedding date.'),
+                            ]),
                     ]),
 
                 Section::make('Quote')
@@ -77,9 +67,9 @@ class InvitationForm
                                 Select::make('event_type')
                                     ->label('Type')
                                     ->options([
-                                        'ceremony' => 'Ceremony',
-                                        'reception' => 'Reception',
-                                        'engagement' => 'Engagement',
+                                        'ceremony' => 'Upacara Pennikahan',
+                                        'reception' => 'Resepsi',
+                                        'engagement' => 'Pertunangan',
                                     ])
                                     ->required(),
                                 DateTimePicker::make('start_at')
@@ -105,7 +95,19 @@ class InvitationForm
                             ->columns(2)
                             ->defaultItems(0)
                             ->collapsible()
-                            ->itemLabel(fn (array $state): ?string => $state['event_type'] ?? 'Event'),
+                            ->itemLabel(fn(array $state): ?string => $state['event_type'] ?? 'Event'),
+                    ]),
+
+                Section::make('Design')
+                    ->schema([
+                        Select::make('design_id')
+                            ->label('Design')
+                            ->relationship('design', 'name')
+                            ->searchable()
+                            ->preload()
+                            ->nullable()
+                            ->createOptionForm(self::designForm())
+                            ->editOptionForm(self::designForm()),
                     ]),
 
                 Section::make('Gallery')
@@ -130,7 +132,7 @@ class InvitationForm
                             ->columns(2)
                             ->defaultItems(0)
                             ->collapsible()
-                            ->itemLabel(fn (array $state): ?string => $state['subject'] ?? 'Gallery item'),
+                            ->itemLabel(fn(array $state): ?string => $state['subject'] ?? 'Gallery item'),
                     ]),
             ]);
     }
@@ -157,8 +159,8 @@ class InvitationForm
     protected static function formatSlugPreview(Get $get): string
     {
         $slug = self::makeSlug(
-            data_get($get('groom'), 'full_name'),
-            data_get($get('bride'), 'full_name'),
+            data_get($get('groom'), 'nick_name'),
+            data_get($get('bride'), 'nick_name'),
             $get('wedding_date'),
         );
 
@@ -170,6 +172,7 @@ class InvitationForm
         return [
             TextInput::make('full_name')
                 ->label('Full name')
+                ->columnSpanFull()
                 ->required()
                 ->maxLength(255)
                 ->live(debounce: 500),
@@ -187,12 +190,13 @@ class InvitationForm
             TextInput::make('mother_name')
                 ->maxLength(255)
                 ->nullable(),
-            Textarea::make('address')
-                ->rows(3)
-                ->nullable(),
             TextInput::make('instagram_username')
                 ->label('Instagram username')
                 ->maxLength(255)
+                ->nullable(),
+            Textarea::make('address')
+                ->rows(3)
+                ->columnSpanFull()
                 ->nullable(),
         ];
     }
