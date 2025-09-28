@@ -72,8 +72,14 @@ export default function ClassicBlue() {
       return trimmed && trimmed.length > 0 ? trimmed : undefined;
   };
 
-  const heroGroomName = extractPrimary(store?.groom?.fullName) ?? 'Aimlesson';
-  const heroBrideName = extractPrimary(store?.bride?.fullName) ?? 'Pxxtria';
+  const heroGroomName = extractPrimary(store?.groom?.fullName) ?? 'Groom';
+  const heroBrideName = extractPrimary(store?.bride?.fullName) ?? 'Bride';
+
+  const groomFullName = store?.groom?.fullName?.trim();
+  const brideFullName = store?.bride?.fullName?.trim();
+  const groomDisplay = groomFullName && groomFullName.length > 0 ? groomFullName : heroGroomName;
+  const brideDisplay = brideFullName && brideFullName.length > 0 ? brideFullName : heroBrideName;
+
 
   // confetti: stabil
   const confetti = useMemo(
@@ -138,7 +144,7 @@ export default function ClassicBlue() {
         <div className="rightInner">
           <div className="heroArch">
             <p className="topLabel">THE WEDDING OF</p>
-            <h2 className="goldNames">John <span className="amp">&</span> wendy</h2>
+            <h2 className="goldNames">{groomDisplay} <span className="amp">&</span> {brideDisplay}</h2>
             <p className="dateText">{heroDateText}</p>
             <ScrollCue />
           </div>
@@ -147,7 +153,7 @@ export default function ClassicBlue() {
           <section className="quotesSection"><QuotesCard store={store} /></section>
 
           {/* Couple */}
-          <CoupleSection store={store} />
+          <CoupleSection store={store} groomName={groomDisplay} brideName={brideDisplay} />
 
           {/* Galleries */}
           <StoryGallerySection store={store} />
@@ -260,10 +266,13 @@ type Person = {
   photo?: string;
 };
 
-function CoupleSection({ store }: { store: InviteStore }) {
+function CoupleSection({ store, groomName, brideName }: { store: InviteStore; groomName: string; brideName: string }) {
+  const brideNameResolved = store?.bride?.fullName?.trim() || brideName;
+  const groomNameResolved = store?.groom?.fullName?.trim() || groomName;
+
   const bride: Person = {
-    ig: store?.bride?.ig ?? undefined,
-    fullname: store?.bride?.fullName ?? '',
+    ig: store?.bride?.ig?.trim() || '',
+    fullname: brideNameResolved,
     order: store?.bride?.order ?? '',
     father: store?.bride?.father ?? '',
     mother: store?.bride?.mother ?? '',
@@ -272,8 +281,8 @@ function CoupleSection({ store }: { store: InviteStore }) {
   };
 
   const groom: Person = {
-    ig: store?.groom?.ig ?? undefined,
-    fullname: store?.groom?.fullName ?? '',
+    ig: store?.groom?.ig?.trim() || '',
+    fullname: groomNameResolved,
     order: store?.groom?.order ?? '',
     father: store?.groom?.father ?? '',
     mother: store?.groom?.mother ?? '',
@@ -284,15 +293,17 @@ function CoupleSection({ store }: { store: InviteStore }) {
   return (
     <section id="couple" className="coupleSection">
       <h3 className="coupleHeading">The Wedding Of</h3>
-
       <div className="coupleWrap">
-        <ProfileCard person={bride} variant="bride" />
-        <div className="dividerHR" />
         <ProfileCard person={groom} variant="groom" />
+        <div className="coupleDivider" aria-hidden>
+          <span className="amp">&</span>
+        </div>
+        <ProfileCard person={bride} variant="bride" />
       </div>
     </section>
   );
 }
+
 
 function ProfileCard({ person, variant }: { person: Person; variant: "bride" | "groom" }) {
   return (
@@ -647,7 +658,10 @@ function AlsoInviteSection({ store }: { store: InviteStore }) {
 /* ===== Gift ===== */
 function GiftSection({ store }: { store: InviteStore }) {
   const qrisImg = store?.gift?.qrisImage;
-  const singleBank = store?.gift?.bank || { bankName: "BCA", accountNumber: "1234567890", accountName: "John & wendy", qr: "" as string | undefined };
+  const groomName = store?.groom?.fullName?.trim();
+  const brideName = store?.bride?.fullName?.trim();
+  const coupleDisplay = [groomName, brideName].filter(Boolean).join(' & ') || 'The Wedding Couple';
+  const singleBank = store?.gift?.bank || { bankName: "BCA", accountNumber: "1234567890", accountName: coupleDisplay, qr: "" as string | undefined };
   const banks = Array.isArray(store?.gift?.banks) && store.gift.banks.length ? store.gift.banks : [singleBank];
   const shipAddr = store?.gift?.address || "Jl. Contoh No. 123, Purwokerto, Jawa Tengah";
   const waTarget = store?.gift?.whatsapp || "6281234567890";
@@ -891,3 +905,15 @@ function MusicToggle({ className }: { className?: string }) {
     document.body
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
