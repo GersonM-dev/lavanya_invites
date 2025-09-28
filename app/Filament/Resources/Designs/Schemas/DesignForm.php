@@ -46,16 +46,19 @@ class DesignForm
                     FileUpload::make('main_sample_pict')
                         ->label('Main sample')
                         ->image()
+                        ->disk('public')
                         ->directory('designs')
                         ->nullable(),
                     FileUpload::make('secondary_sample_pict')
                         ->label('Secondary sample')
                         ->image()
+                        ->disk('public')
                         ->directory('designs')
                         ->nullable(),
                     FileUpload::make('third_sample_pict')
                         ->label('Third sample')
                         ->image()
+                        ->disk('public')
                         ->directory('designs')
                         ->nullable(),
                 ])

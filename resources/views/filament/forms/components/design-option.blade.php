@@ -8,13 +8,34 @@
         $design->third_sample_pict,
     ])
         ->filter()
-        ->map(function (string $path): string {
+        ->map(function (string $path): ?string {
             if (Str::startsWith($path, ['http://', 'https://', 'data:', '//'])) {
                 return $path;
             }
 
-            return Storage::url($path);
-        });
+            foreach (['public', config('filesystems.default')] as $disk) {
+                if (blank($disk)) {
+                    continue;
+                }
+
+                try {
+                    $storage = Storage::disk($disk);
+                } catch (\\Throwable $exception) {
+                    continue;
+                }
+
+                try {
+                    if ($storage->exists($path)) {
+                        return $storage->url($path);
+                    }
+                } catch (\\Throwable $exception) {
+                    continue;
+                }
+            }
+
+            return null;
+        })
+        ->filter();
 @endphp
 
 <div class="flex items-start gap-3 py-1">

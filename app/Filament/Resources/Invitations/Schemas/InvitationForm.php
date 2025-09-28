@@ -120,6 +120,7 @@ class InvitationForm
                             ->schema([
                                 FileUpload::make('path')
                                     ->image()
+                                    ->disk('public')
                                     ->directory('invitations/gallery')
                                     ->required(),
                                 Select::make('subject')
