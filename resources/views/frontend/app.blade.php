@@ -1,5 +1,10 @@
 @php
     $manifestPath = public_path('frontend/manifest.json');
+
+    if (! file_exists($manifestPath)) {
+        $manifestPath = public_path('frontend/.vite/manifest.json');
+    }
+
     $manifest = [];
 
     if (file_exists($manifestPath)) {
@@ -30,7 +35,7 @@
     <title>Lavanya Invite</title>
     <meta name="theme-color" content="#ffffff" />
     @foreach ($cssFiles as $css)
-      <link rel="stylesheet" href="{{ asset('frontend/' . $css) }}" />
+      <link rel="stylesheet" href="{{ asset('frontend/' . ltrim($css, '/')) }}" />
     @endforeach
     @if ($useDevServer)
       <script type="module">import "http://localhost:5173/{{ '@' }}vite/client";</script>
@@ -40,7 +45,7 @@
   <body>
     <div id="root"></div>
     @if ($jsFile)
-      <script type="module" src="{{ asset('frontend/' . $jsFile) }}" defer></script>
+      <script type="module" src="{{ asset('frontend/' . ltrim($jsFile, '/')) }}" defer></script>
     @elseif (!$useDevServer)
       <p style="text-align:center;margin-top:2rem;font-family:system-ui;">
         Build assets are missing. Run <code>npm run build</code> from the <code>frontend</code> directory and redeploy.
