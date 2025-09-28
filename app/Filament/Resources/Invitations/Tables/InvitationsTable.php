@@ -34,6 +34,16 @@ class InvitationsTable
                     ->label('Slug')
                     ->limit(30)
                     ->searchable(),
+                TextColumn::make('public_link')
+                    ->label('Public Link')
+                    ->state(fn ($record) => sprintf('https://invite.lavanyaenterprise.id/%s', $record->slug))
+                    ->copyable()
+                    ->copyMessage('Link copied to clipboard')
+                    ->copyMessageDuration(1500)
+                    ->limit(40)
+                    ->toggleable()
+                    ->searchable(false)
+                    ->sortable(false),
                 ImageColumn::make('design.main_sample_pict')
                     ->label('Design Preview')
                     ->disk('public')
