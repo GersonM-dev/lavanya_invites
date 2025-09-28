@@ -79,6 +79,14 @@ export default function CoverSplit() {
     const rightRef = useRef<HTMLDivElement>(null);
     const store = useInviteStore();
 
+    const extractPrimary = (value?: string | null) => {
+        const trimmed = value?.trim();
+        return trimmed && trimmed.length > 0 ? trimmed : undefined;
+    };
+
+    const heroGroomName = extractPrimary(store?.groom?.fullName) ?? 'Aimlesson';
+    const heroBrideName = extractPrimary(store?.bride?.fullName) ?? 'Pxxtria';
+
     // confetti: stabil (tidak berubah setiap re-render)
     const confetti = useMemo(
         () =>
@@ -118,7 +126,7 @@ export default function CoverSplit() {
                 />
                 <div className="leftOverlay" />
                 <h1 className="coupleName">
-                    Aimlesson <br /> & Pxxtria
+                    {heroGroomName} <br /> & {heroBrideName}
                 </h1>
                 <div className="confettiWrap" aria-hidden>
                     {confetti.map((c, i) => (
@@ -273,22 +281,22 @@ type Person = {
 
 function CoupleSection({ store }: { store: InviteStore }) {
     const bride: Person = {
-        ig: store?.bride?.ig || "agnzpatria",
-        fullname: store?.bride?.fullName || "Wendy, S.Kom",
-        order: store?.bride?.order || "youngest Daughter of",
-        father: store?.bride?.father || "Bapak Philipus &",
-        mother: store?.bride?.mother || "Ibu Scholastica",
-        city: store?.bride?.city || "dari Sidareja",
+        ig: store?.bride?.ig ?? undefined,
+        fullname: store?.bride?.fullName ?? '',
+        order: store?.bride?.order ?? '',
+        father: store?.bride?.father ?? '',
+        mother: store?.bride?.mother ?? '',
+        city: store?.bride?.city ?? '',
         photo: store?.bride?.photo || BridePict,
     };
 
     const groom: Person = {
-        ig: store?.groom?.ig || "John.m5",
-        fullname: store?.groom?.fullName || "John, S.kom",
-        order: store?.groom?.order || "First Son of",
-        father: store?.groom?.father || "Bapak Feri &",
-        mother: store?.groom?.mother || "Ibu Afrisa",
-        city: store?.groom?.city || "dari Ciloning",
+        ig: store?.groom?.ig ?? undefined,
+        fullname: store?.groom?.fullName ?? '',
+        order: store?.groom?.order ?? '',
+        father: store?.groom?.father ?? '',
+        mother: store?.groom?.mother ?? '',
+        city: store?.groom?.city ?? '',
         photo: store?.groom?.photo || GroomPict,
     };
 
