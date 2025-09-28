@@ -17,6 +17,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Schema;
 use Illuminate\Support\Str;
+use App\Models\Design;
 
 
 class InvitationForm
@@ -103,6 +104,8 @@ class InvitationForm
                         Select::make('design_id')
                             ->label('Design')
                             ->relationship('design', 'name')
+                            ->getOptionLabelFromRecordUsing(fn (Design $record) => view('filament.forms.components.design-option', ['design' => $record])->render())
+                            ->allowHtml()
                             ->searchable()
                             ->preload()
                             ->nullable()
@@ -119,11 +122,19 @@ class InvitationForm
                                     ->image()
                                     ->directory('invitations/gallery')
                                     ->required(),
-                                TextInput::make('subject')
-                                    ->maxLength(255)
+                                Select::make('subject')
+                                    ->options([
+                                        'groom' => 'Groom',
+                                        'bride' => 'Bride',
+                                        'couple' => 'Couple',
+                                    ])
                                     ->nullable(),
-                                TextInput::make('slot')
-                                    ->maxLength(255)
+                                Select::make('slot')
+                                    ->options([
+                                        'main' => 'Main',
+                                        'secondary' => 'Secondary',
+                                        'third' => 'Third',
+                                    ])
                                     ->nullable(),
                                 TextInput::make('sort_order')
                                     ->numeric()
