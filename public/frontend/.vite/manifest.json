@@ -1,0 +1,48 @@
+{
+  "index.html": {
+    "file": "assets/index-D0a4V37R.js",
+    "name": "index",
+    "src": "index.html",
+    "isEntry": true,
+    "css": [
+      "assets/index-8Ga-2VYf.css"
+    ],
+    "assets": [
+      "assets/picture-C4xmjCI_.jpg",
+      "assets/background1-D-_OTDq6.png",
+      "assets/sampai-jadi-debu-DSdBdH52.mp3",
+      "assets/BridePict-hu2oSINQ.jpg",
+      "assets/GroomPict-BcChtaQP.jpg",
+      "assets/background2-RToEgXIX.png",
+      "assets/background3-DmoyQ4lE.png"
+    ]
+  },
+  "src/assets/BridePict.jpg": {
+    "file": "assets/BridePict-hu2oSINQ.jpg",
+    "src": "src/assets/BridePict.jpg"
+  },
+  "src/assets/GroomPict.jpg": {
+    "file": "assets/GroomPict-BcChtaQP.jpg",
+    "src": "src/assets/GroomPict.jpg"
+  },
+  "src/assets/audio/sampai-jadi-debu.mp3": {
+    "file": "assets/sampai-jadi-debu-DSdBdH52.mp3",
+    "src": "src/assets/audio/sampai-jadi-debu.mp3"
+  },
+  "src/assets/background1.png": {
+    "file": "assets/background1-D-_OTDq6.png",
+    "src": "src/assets/background1.png"
+  },
+  "src/assets/background2.png": {
+    "file": "assets/background2-RToEgXIX.png",
+    "src": "src/assets/background2.png"
+  },
+  "src/assets/background3.png": {
+    "file": "assets/background3-DmoyQ4lE.png",
+    "src": "src/assets/background3.png"
+  },
+  "src/assets/picture.jpg": {
+    "file": "assets/picture-C4xmjCI_.jpg",
+    "src": "src/assets/picture.jpg"
+  }
+}

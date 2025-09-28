@@ -16,8 +16,10 @@
 
     $jsFile = $entry['file'] ?? null;
     $cssFiles = $entry['css'] ?? [];
-    $isLocal = app()->environment('local');
-    $useDevServer = $isLocal && empty($jsFile);
+    $host = request()->getHost();
+    $isLocalHost = in_array($host, ['localhost', '127.0.0.1']);
+    $isLocalEnv = app()->environment('local');
+    $useDevServer = $isLocalEnv && $isLocalHost && empty($jsFile);
 @endphp
 <!DOCTYPE html>
 <html lang="en">
@@ -39,6 +41,10 @@
     <div id="root"></div>
     @if ($jsFile)
       <script type="module" src="{{ asset('frontend/' . $jsFile) }}" defer></script>
+    @elseif (!$useDevServer)
+      <p style="text-align:center;margin-top:2rem;font-family:system-ui;">
+        Build assets are missing. Run <code>npm run build</code> from the <code>frontend</code> directory and redeploy.
+      </p>
     @endif
   </body>
 </html>
