@@ -1,0 +1,13 @@
+/* ===================== MUSIC BUTTON ===================== */
+.musicBtn{
+  position:fixed; top:max(12px, env(safe-area-inset-top) + 8px); left:50%; transform:translate(-50%,0);
+  width:40px; height:40px; border-radius:999px; border:1px solid #e5e7eb; background:#fff;
+  display:grid; place-items:center; cursor:pointer; box-shadow: 0 8px 22px rgba(0,0,0,.12); z-index:9999;
+}
+.musicBtn:hover{ background:#f9fafb; }
+.musicBtn .musicIcon{ font-size:18px; line-height:1; }
+.musicBtn.is-playing::after{
+  content:""; position:absolute; inset:-6px; border-radius:999px;
+  box-shadow:none; /* hilangkan pulsasi */
+}
+@keyframes music-pulse{ to{ box-shadow: 0 0 0 14px rgba(186,131,52,0); } }

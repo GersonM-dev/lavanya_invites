@@ -1,0 +1,97 @@
+/* ===================== GIFT (theme-agnostic) ===================== */
+.giftMethods{ margin:8px 0 12px; }
+
+.giftRadio{
+  display:flex; align-items:center; gap:10px; padding:10px 0;
+  color: var(--ink-700);
+  font:500 clamp(14px, 2.6vw, 16px)/1.6 var(--font-heading);
+}
+.giftRadio input{ accent-color: var(--accent); width:18px; height:18px; }
+.giftRadio b{ color: var(--ink-700); }
+.giftRadio .muted{ color:#6b7280; font-size:.95em; }
+/* garis putus-putus mengikuti warna tema */
+.giftRadio.line{
+  border-top:1px dashed color-mix(in srgb, var(--accent) 55%, transparent);
+  margin-top:6px;
+}
+
+/* panel / box */
+.qrisBox, .bankBox, .addrBox{
+  margin:6px 0 12px; padding:clamp(12px,4vw,18px); border-radius:14px;
+  background:#fff; border:1px solid var(--line); color: var(--ink-700);
+}
+.qrisImg{ display:block; width:min(320px, 80vw); margin:0 auto; border-radius:12px; }
+.qrisPlaceholder{ text-align:center; padding:28px 12px; color:#9CA3AF; }
+
+/* form */
+.giftForm{ display:grid; gap:clamp(10px,3.6vw,14px); margin-top:6px; }
+.giftField span{ display:block; font-size:14px; color:#6b7280; margin-bottom:6px; }
+.giftField input, .giftField textarea{
+  width:100%; border:1px solid #e5e7eb; border-radius:12px;
+  padding:12px 14px; font-size:16px; outline:none; background:#fff;
+}
+/* fokus ikut warna tema */
+.giftField input:focus, .giftField textarea:focus{
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+/* CTA */
+.giftSubmit{
+  margin-top:6px; padding:14px 16px; border-radius:999px; border:0; cursor:pointer;
+  font-weight:800; font-size:20px; color:#f4f5f7;
+  background: var(--grad-cta, var(--grad-heading, var(--grad-gold)));
+  transition: transform .12s ease, box-shadow .2s ease;
+}
+.giftSubmit:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+/* bank cards */
+.bankCards{ display:grid; gap:14px; margin-top:8px; }
+.bankCard{
+  background:#fff; border:1px solid var(--line); border-radius:14px;
+  padding:16px 14px; text-align:center; position:relative;
+  box-shadow: 0 8px 20px rgba(0,0,0,.06);
+}
+.bankHead{
+  font:800 clamp(16px, 3.6vw, 20px)/1 var(--font-heading);
+  color: var(--accent); text-transform:uppercase; letter-spacing:.02em;
+}
+.bankNo{
+  margin-top:8px; font-weight:800; font-size: clamp(18px, 4.4vw, 22px);
+  color: var(--ink-700); display:inline-flex; align-items:center; gap:8px;
+}
+.copyBtn{
+  border:1px solid #e5e7eb; border-radius:999px; width:28px; height:28px;
+  display:grid; place-items:center; background:#fff; cursor:pointer; color: var(--accent);
+}
+.copyBtn:hover{ background:#f9fafb; }
+.bankOwner{
+  margin-top:6px; color: var(--ink-700);
+  font:500 clamp(14px, 2.8vw, 16px)/1.4 var(--font-heading);
+}
+.copiedHint{
+  position:absolute; right:10px; top:10px; background:#10b981;
+  color:#fff; font-size:12px; padding:4px 8px; border-radius:999px;
+}
+/* link kecil mengikuti tema */
+.qrToggle{
+  margin-top:8px; background:transparent; border:0; cursor:pointer;
+  color: var(--accent); font-weight:600; font-size:14px; text-decoration:underline;
+}
+.bankQR{
+  margin:10px auto 0; display:block; width:min(240px, 70vw);
+  border-radius:12px; border:1px solid #e5e7eb; background:#fff;
+}
+
+@media (max-width:560px){
+  .giftRadio{ align-items:flex-start; font-size:15px; line-height:1.5; }
+  .giftRadio input{ margin-top:2px; }
+  .giftField span{ font-size:13px; }
+  .giftField input, .giftField textarea{ font-size:15px; }
+  .giftSubmit{ font-size:18px; }
+  .qrisBox, .bankBox, .addrBox{ margin-inline:auto; width:100%; }
+}
+

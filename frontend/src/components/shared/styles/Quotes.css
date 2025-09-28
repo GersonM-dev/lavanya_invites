@@ -1,0 +1,44 @@
+/* ===================== QUOTES ===================== */
+.sectionCard{
+  width:min(var(--card-max), 94vw);
+  margin: 24px auto;
+  padding: clamp(18px, 4vw, var(--card-pad));
+  background: var(--bg-200);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  backdrop-filter: blur(2px);
+  box-sizing: border-box;
+}
+.sectionCard.quotesBlock{
+  margin: 12px auto 40px;
+  background: var(--panel-bg);
+  border:1px solid var(--line);
+  border-radius:18px;
+  box-shadow: var(--shadow-1);
+  color: var(--gold-700);
+  position: relative;
+}
+.quotesBlock .quotesDecorTop{
+  position:absolute; inset:0 0 auto 0; height:78px;
+  border-top-left-radius:18px; border-top-right-radius:18px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,247,234,0)),
+    radial-gradient(120px 60px at 22% 45%, rgba(231,197,138,.35), transparent 70%),
+    radial-gradient(120px 60px at 78% 45%, rgba(231,197,138,.35), transparent 70%);
+  pointer-events:none;
+}
+.quotesBlock blockquote{
+  margin:6px auto 0; padding:0; border:0; max-width:64ch; text-align:center;
+  font-style:italic; font: 500 clamp(18px,4.6vw,22px)/1.75 var(--font-heading); color:var(--gold-700);
+}
+.quotesBlock .qSource{ text-align:center; margin-top:12px; font:700 18px/1 var(--font-heading); color:var(--gold-700); }
+@media (max-width:640px){
+  .sectionCard.quotesBlock{ padding:22px 18px 26px; }
+  .quotesBlock blockquote{ line-height:1.7; }
+}
+@media (max-width:480px){
+  .quotesBlock .quotesDecorTop{ height:60px; }
+  .quotesBlock blockquote{ line-height:1.6; }
+  .quotesBlock .qSource{ font-size:16px; }
+}
+

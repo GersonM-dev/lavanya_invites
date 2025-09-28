@@ -1,0 +1,76 @@
+/* ===================== SPLIT COVER ===================== */
+.splitPage{ position:relative; min-height:100vh; display:grid; grid-template-columns:1fr 1fr; }
+.split.left{ position:relative; overflow:hidden; }
+.coverImg{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.leftOverlay{ position:absolute; inset:0; background: linear-gradient(180deg, rgba(0,0,0,0.20), rgba(0,0,0,0.35)); }
+.coupleName{
+  position:absolute; left:28px; bottom:28px; color:#fff;
+  font-family: var(--font-script); font-size: clamp(32px, 6vw, 54px); line-height:1.1;
+  text-shadow: 0 2px 10px rgba(0,0,0,.4);
+}
+/* ===== Confetti ===== */
+.confettiWrap{
+  position: absolute; inset: 0; pointer-events: none;
+  overflow: hidden; /* biar konfeti tidak keluar panel */
+}
+
+.confetti{
+  position: absolute;
+  width: 6px; height: 6px; border-radius: 999px;
+  background: rgba(255,255,255,.9);
+  filter: drop-shadow(0 0 2px rgba(0,0,0,.3));
+  will-change: transform, opacity;
+
+  /* durasi bisa kamu override via inline CSS var --dur */
+  --dur: 8s;
+
+  /* animasi utama (jatuh + goyang + putar) */
+  animation: confetti-fall var(--dur) linear infinite;
+  animation-delay: var(--delay, 0s); /* kamu sudah kasih inline delay */
+}
+
+/* variasi warna/ukuran/durasi biar lebih hidup */
+.confetti:nth-child(3n)     { background:#F6D56B; }
+.confetti:nth-child(3n + 1) { background:#E8C478; }
+.confetti:nth-child(3n + 2) { background:#B5812D; }
+.confetti:nth-child(4n)     { width:8px; height:8px; }
+.confetti:nth-child(5n)     { width:4px; height:4px; }
+.confetti:nth-child(6n)     { --dur: 9.5s; }
+.confetti:nth-child(7n)     { --dur: 7s; }
+
+/* Keyframes: jatuh + sway + rotate (satu animasi supaya kompatibel luas) */
+@keyframes confetti-fall{
+  0%   { transform: translate3d(0, -120%, 0) rotate(0turn);    opacity: 0; }
+  10%  { opacity: 1; }
+  25%  { transform: translate3d(-10px, 25vh, 0) rotate(.25turn); }
+  50%  { transform: translate3d( 10px, 55vh, 0) rotate(.50turn); }
+  75%  { transform: translate3d( -6px, 85vh, 0) rotate(.75turn); }
+  100% { transform: translate3d(  0, 110vh, 0) rotate(1turn);   opacity: 0; }
+}
+
+@keyframes drift{ 0%{transform:translateY(0) scale(1); opacity:1;} 100%{transform:translateY(30px) scale(.9); opacity:.6;} }
+
+/* right panel */
+.split.right{
+  position:relative; z-index:1; background-size:cover; background-position:center;
+  overflow-y:auto; height:100vh; scroll-behavior:smooth;
+}
+.split.right .rightInner{ position:relative; z-index:1; padding:0 16px 56px; }
+.heroArch{ min-height:100vh; display:grid; place-items:center; text-align:center; padding:24px 16px; }
+.topLabel{ font: 600 18px/1 var(--font-heading); letter-spacing:.24em; color:var(--gold-700); text-transform:uppercase; }
+.goldNames{ margin-top:10px; font-family:var(--font-script); font-size: clamp(36px, 6.5vw, 56px); background: var(--grad-gold);
+  -webkit-background-clip:text; background-clip:text; color:transparent; }
+.goldNames .amp{ font-family:var(--font-heading); }
+.dateText{ margin-top:16px; font: 600 19px/1.4 var(--font-heading); color:var(--gold-700); }
+.archSvg{ position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+@media (max-width:960px){
+  .splitPage{ grid-template-columns:1fr; min-height:auto; }
+  .split.left{ min-height:56vh; }
+  .split.right{ height:auto; min-height:44vh; overflow-y:visible; }
+  .archSvg path{ stroke-width:6; }
+}
+@media (max-width:600px){
+  .split.left{ min-height:48vh; }
+  .split.right .rightInner{ padding:0 clamp(12px,4vw,18px) clamp(64px,10vw,84px); }
+}
+

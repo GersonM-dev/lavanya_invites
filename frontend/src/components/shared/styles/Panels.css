@@ -1,0 +1,28 @@
+/* ===================== SHARED PANEL LOOK (UNIFIED BOX) ===================== */
+.panelCard,
+.giftCard,
+.wishesCard,
+.datePages .dateCard,
+.locationSection .mapCard{
+  width:min(var(--card-max), 94vw);
+  max-width:var(--card-max);
+  margin-inline:auto;
+  padding:clamp(18px, 4vw, var(--card-pad));
+  border-radius: clamp(16px, 5vw, var(--card-radius));
+  background: var(--panel-bg);
+  border:1px solid var(--line);
+  box-shadow: var(--shadow-2);
+  box-sizing:border-box;
+}
+
+/* Heading & subheading seragam */
+.panelTitle{ font:700 clamp(36px, 6.5vw, 60px) var(--font-script); text-align:center; }
+.panelSub{ text-align:center; color:#7A4E1D; opacity:.9; font:500 clamp(14px, 2.6vw, 16px)/1.6 var(--font-heading); margin:6px auto 14px; }
+@media (max-width:520px){
+  .panelCard,
+  .giftCard,
+  .wishesCard,
+  .datePages .dateCard,
+  .locationSection .mapCard{ width:calc(100vw - 32px); }
+}
+

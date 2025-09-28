@@ -1,0 +1,30 @@
+:root{
+  /* fonts */
+  --font-body: "Poppins", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Open Sans", sans-serif;
+  --font-heading: var(--font-body);
+  --font-script: "Great Vibes", cursive;
+
+  /* default (gold) – akan dioverride di theme */
+  --gold-700:#B45309;
+  --gold-600:#B5812D;
+  --gold-500:#C08E3D;
+  --gold-300:#E8C478;
+  --gold-200:#F6D56B;
+  --gold-100:#FACC15;
+
+  --ink-900:#0b0f19; --ink-700:#1f2937; --ink-600:#374151; --ink-500:#4b5563; --ink-400:#6b7280;
+
+  --grad-gold:      linear-gradient(90deg,var(--gold-700) 0%, var(--gold-100) 50%, var(--gold-700) 100%);
+  --grad-gold-vert: linear-gradient(180deg,var(--gold-200) 0%, var(--gold-600) 100%);
+  --shadow-1: 0 10px 28px rgba(180,83,9,.08);
+  --shadow-2: 0 14px 36px rgba(180,83,9,.10);
+  --shadow-3: 0 16px 48px rgba(0,0,0,.10);
+
+  --card-max: 760px; --card-pad: 24px; --card-radius: 22px;
+
+  --panel-bg: linear-gradient(180deg,#FFFEFB 0%, #FFF7E8 100%);
+  --line:#E7C58A; --bg-200: rgba(255,255,255,0.85);
+
+  /* aksen default utk ikon kecil */
+  --accent: var(--gold-600);
+}

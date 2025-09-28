@@ -1,0 +1,25 @@
+/* center toolbar */
+.midToolbar{
+  z-index:100; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+  display:grid; gap:10px; padding:10px; background:rgba(255,255,255,.9);
+  border-radius:24px; box-shadow: var(--shadow-1);
+}
+.midToolbar li{ list-style:none; }
+.midToolbar button{
+  width:34px; height:34px; border-radius:999px; border:1px solid var(--gold-700);
+  background:#fff; cursor:pointer; font-size:16px;
+}
+.midToolbar button:hover{ background: var(--gold-100); }
+@media (max-width:960px){ .midToolbar{ display:none; } }
+
+/* src/styles/app.css */
+.midToolbar button { color: var(--accent); }          /* default */
+.midToolbar button:hover { color: var(--text); }      /* hover */
+
+.copyBtn { color: var(--accent); }
+.musicBtn { color: var(--accent); }
+
+/* ukuran & ketebalan garis */
+.midToolbar button svg,
+.copyBtn svg,
+.musicBtn svg { width: 20px; height: 20px; stroke-width: 1.75; }

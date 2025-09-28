@@ -1,0 +1,12 @@
+/* ============== HILANGKAN ANIMASI HEADING ============== */
+/* Versi statis (tanpa animasi shimmer/glint) untuk semua heading */
+.coupleHeading,
+.galleryTitle,
+.panelTitle,
+.dateCardTitle,
+.rsvpTitle,
+.wishesTitle{
+  background: var(--grad-gold);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  text-shadow: 0 0 18px rgba(250,204,21,.22);
+}

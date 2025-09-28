@@ -1,0 +1,83 @@
+.invite-status {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  background: radial-gradient(circle at top, rgba(255, 215, 0, 0.12), transparent 55%),
+    radial-gradient(circle at bottom, rgba(148, 163, 184, 0.15), transparent 45%),
+    #f8fafc;
+  color: #0f172a;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  font-family: "Poppins", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+.invite-status h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.invite-status p {
+  max-width: 32rem;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  line-height: 1.6;
+  color: rgba(15, 23, 42, 0.75);
+}
+
+.invite-status__spinner {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 999px;
+  border: 5px solid rgba(203, 213, 225, 0.6);
+  border-top-color: rgba(15, 23, 42, 0.75);
+  animation: invite-spin 1s linear infinite;
+}
+
+.invite-status--error {
+  background: radial-gradient(circle at top, rgba(239, 68, 68, 0.08), transparent 55%),
+    radial-gradient(circle at bottom, rgba(148, 163, 184, 0.15), transparent 45%),
+    #fef2f2;
+  color: #7f1d1d;
+}
+
+.invite-status--error p {
+  color: rgba(127, 29, 29, 0.78);
+}
+
+@keyframes invite-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.invite-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f59e0b, #f97316);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 12px 20px rgba(249, 115, 22, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.invite-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 24px rgba(249, 115, 22, 0.35);
+}
+
+.invite-status code {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 0.5rem;
+  background: rgba(15, 23, 42, 0.08);
+  color: rgba(15, 23, 42, 0.85);
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+}

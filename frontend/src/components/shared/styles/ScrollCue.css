@@ -1,0 +1,35 @@
+/* ===== Scroll cue (mouse + dot) ===== */
+.scrollCue { display:grid; place-items:center; gap:8px; margin-top:18px; color:var(--gold-700); font-size:clamp(14px,2.2vw,18px); }
+
+.scrollCue .mouse{
+  width:26px; height:40px; border-radius:16px;
+  border:1px solid var(--gold-700);
+  position:relative; overflow:hidden;
+}
+
+.scrollCue .mouse .dot{
+  position:absolute;
+  left:50%;                     
+  top:6px;                      
+  transform: translate(-50%, 0);
+  width:6px; height:6px; border-radius:999px;
+  background:var(--gold-700);
+  animation: mouse-dot 1.3s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* animasi naik–turun halus */
+@keyframes mouse-dot{
+  0%   { transform: translateY(0);     opacity:.8; }
+  60%  { transform: translateY(16px);  opacity:1;  }
+  100% { transform: translateY(0);     opacity:.6; }
+}
+
+/* Tema classic (biru) – warna border & dot ikut accent */
+.theme-classic .scrollCue .mouse{ border-color: var(--accent); }
+.theme-classic .scrollCue .mouse .dot{ background: var(--accent); }
+
+/* Hargai preferensi reduce motion */
+@media (prefers-reduced-motion: reduce){
+  .scrollCue .mouse .dot{ animation: none; }
+}

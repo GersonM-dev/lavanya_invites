@@ -1,0 +1,13 @@
+/* ===================== LOCATION ===================== */
+.locationSection{ min-height:70vh; display:grid; place-items:center; padding: clamp(16px, 3vw, 28px) 0; }
+.mapCard{
+  width:min(var(--card-max), 94vw); max-width:var(--card-max); margin-inline:auto; padding:0;
+  background:transparent; border:0; box-shadow:none; box-sizing:border-box;
+}
+.mapWrap{ border-radius:0; overflow:visible; box-shadow:none; margin:0; }
+.mapFrame{ display:block; width:100%; aspect-ratio:16/9; border:0; }
+.locationAddress{
+  text-align:center; color:#7A4E1D; margin:12px auto 16px;
+  font:600 clamp(16px, 2.6vw, 20px)/1.6 var(--font-heading); max-width:52ch;
+}
+@media (max-width:480px){ .locationAddress{ max-width:38ch; } .mapCard{ padding:16px 12px; } }

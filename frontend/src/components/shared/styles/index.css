@@ -1,0 +1,19 @@
+@import "./SplitLayout.css";
+@import "./Toolbar.css";
+@import "./ScrollCue.css";
+@import "./Quotes.css";
+@import "./Couple.css";
+@import "./Gallery.css";
+@import "./DatePages.css";
+@import "./Location.css";
+@import "./RSVP.css";
+@import "./AlsoInvite.css";
+@import "./Gift.css";
+@import "./Wishes.css";
+@import "./Music.css";
+@import "./Panels.css";     
+@import "./Headings.css";  
+@import "./DesignSwitch.css";
+
+/* ukuran & jarak ikon seragam */
+.ico{ width:18px; height:18px; stroke-width:1.8; margin-right:.4em; vertical-align:-3px; }

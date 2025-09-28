@@ -1,0 +1,33 @@
+/* ===================== COUPLE ===================== */
+.coupleSection{ position:relative; padding:56px 0 70px; margin:0 -16px; }
+.coupleHeading{
+  text-align:center; margin-top:10px; font-family:var(--font-script);
+  font-size: clamp(36px, 6.5vw, 60px);
+  background: var(--grad-gold);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.coupleHeading, .galleryTitle, .panelTitle, .dateCardTitle, .rsvpTitle{
+  background: var(--grad-gold);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.coupleWrap{ max-width:860px; margin:0 auto; padding:0 12px; }
+.profileCard{ text-align:center; margin:30px auto 24px; }
+.avatarWrap{ display:grid; place-items:center; }
+.avatar{
+  width: clamp(220px, 38vw, 320px); height: clamp(220px, 38vw, 320px);
+  object-fit:cover; border-radius:999px; box-shadow: 0 10px 30px rgba(0,0,0,.18);
+}
+.avatar--placeholder{ display:grid; place-items:center; background:#e5e7eb; color:#6b7280; font-size:12px; letter-spacing:.06em; }
+.ig{ margin-top:10px; font:700 18px/1 var(--font-heading); color:var(--gold-700); display:flex; justify-content:center; gap:8px; }
+.fullname{ margin-top:20px; font-family:var(--font-script); font-size: clamp(28px, 6vw, 40px); color:var(--gold-700); }
+.order{ margin-top:8px; font:700 20px/1.3 var(--font-heading); color:#5B6879; }
+.parents{ margin-top:6px; font:500 18px/1.4 var(--font-heading); color:#5B6879; }
+.city{ margin-top:6px; font:600 18px/1.4 var(--font-heading); color: var(--gold-700); }
+.coupleSection .profileCard .parents{ display:inline-flex !important; align-items:baseline; justify-content:center; gap:.4em; white-space:nowrap; text-align:center; }
+.coupleSection .profileCard .parents br{ display:none !important; }
+.dividerHR{ height:1px; max-width:560px; margin:26px auto; background: linear-gradient(to right, transparent, var(--line), transparent); opacity:.8; }
+@media (max-width:640px){
+  .coupleSection{ padding:44px 0 56px; margin:0 -12px; }
+  .avatar{ width: clamp(200px, 54vw, 280px); height: clamp(200px, 54vw, 280px); }
+  .coupleSection .profileCard .parents{ white-space:normal; flex-wrap:wrap; }
+}

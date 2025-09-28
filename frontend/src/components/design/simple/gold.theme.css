@@ -1,0 +1,90 @@
+/* src/components/design/simple/gold.theme.css */
+.theme-gold{
+  /* Typography */
+  --font-body: "Poppins", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Open Sans", sans-serif;
+  --font-heading: var(--font-body);
+  --font-script: "Great Vibes", cursive;
+
+  /* Gold palette */
+  --gold-700:#B45309;
+  --gold-600:#B5812D;
+  --gold-500:#C08E3D;
+  --gold-300:#E8C478;
+  --gold-200:#F6D56B;
+  --gold-100:#FACC15;
+
+  /* Neutrals */
+  --ink-900:#0b0f19;
+  --ink-700:#1f2937;
+  --ink-600:#374151;
+  --ink-500:#4b5563;
+  --ink-400:#6b7280;
+
+  /* Gradients & shadows — GOLD, bukan biru */
+  --grad-gold:      linear-gradient(90deg,#B45309 0%, #FACC15 50%, #B45309 100%);
+  --grad-gold-vert: linear-gradient(180deg,#F6D56B 0%, #B5812D 100%);
+  --shadow-1: 0 10px 28px rgba(180,83,9,.08);
+  --shadow-2: 0 14px 36px rgba(180,83,9,.10);
+
+  /* Card sizing (samakan dengan tema lain) */
+  --card-max: 760px;
+  --card-pad: 24px;
+  --card-radius: 22px;
+
+  /* Surfaces (emas) */
+  --panel-bg: linear-gradient(180deg,#FFFEFB 0%, #FFF7E8 100%);
+  --line:#E7C58A;
+  --bg-200: rgba(255,255,255,0.85);
+
+  /* util */
+  --accent: var(--gold-600);
+  --text: var(--ink-700);
+}
+
+.theme-gold{
+  --grad-heading:      var(--grad-gold);
+  --grad-heading-vert: var(--grad-gold-vert);
+}
+
+/* Panel/kartu seragam */
+.theme-gold .sectionCard,
+.theme-gold .panelCard,
+.theme-gold .giftCard,
+.theme-gold .wishesCard,
+.theme-gold .datePages .dateCard,
+.theme-gold .locationSection .mapCard{
+  width:min(var(--card-max), 94vw);
+  max-width:var(--card-max);
+  margin-inline:auto;
+  padding:var(--card-pad);
+  border-radius:var(--card-radius);
+  background:var(--panel-bg);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-2);
+  box-sizing:border-box;
+}
+
+/* Gallery box seragam */
+.theme-gold .gallerySection{
+  width:min(var(--card-max), 94vw);
+  max-width:var(--card-max);
+  margin-inline:auto;
+  border-radius:var(--card-radius);
+  background:var(--panel-bg);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-1);
+  overflow:hidden;
+}
+
+/* Teks yang memang bernuansa emas/cokelat */
+.theme-gold .dateLine,
+.theme-gold .datePlace,
+.theme-gold .panelSub,
+.theme-gold .rsvpDesc,
+.theme-gold .inviteList li,
+.theme-gold .locationAddress{ color:#7A4E1D; }
+
+/* Toolbar & music button mengikuti accent emas */
+.theme-gold .midToolbar button{ border-color:var(--accent); color:var(--accent); }
+.theme-gold .midToolbar button:hover{ background:var(--gold-100); color:#1f2937; }
+.theme-gold .musicBtn{ border-color:#e5ddcc; color:var(--accent); box-shadow:0 8px 22px rgba(180,83,9,.18); }

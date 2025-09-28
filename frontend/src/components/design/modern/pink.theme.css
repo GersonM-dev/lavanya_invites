@@ -1,0 +1,128 @@
+/* src/components/design/modern/modern.theme.css */
+.theme-modern{
+  /* Typography – modern */
+  --font-body: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Open Sans", sans-serif;
+  --font-heading: "Outfit", var(--font-body);
+  --font-script: "Great Vibes", cursive;
+
+  /* ===== MAROON PALETTE (ganti gold) ===== */
+  --gold-700:#7A1F33;  /* deep maroon */
+  --gold-600:#9C2F45;  /* wine */
+  --gold-500:#B8475D;  /* raspberry */
+  --gold-300:#E09AAF;  /* soft rose */
+  --gold-200:#F6C6D4;  /* light blush */
+  --gold-100:#FBE6EE;  /* very light pink */
+
+  /* Neutrals */
+  --ink-900:#0b0f19;
+  --ink-700:#111827;
+  --ink-600:#374151;
+  --ink-500:#4b5563;
+
+  /* Card sizing (sama) */
+  --card-max: 760px;
+  --card-pad: 24px;
+  --card-radius: 22px;
+
+  /* Surfaces – agak blush supaya nyatu dengan pink bg */
+  --panel-bg: linear-gradient(180deg,#ffffff 0%, #FFF6F9 100%);
+  --line: rgba(122,31,51,.25);        /* garis maroon transparan */
+  --bg-200: rgba(255,255,255,.92);
+
+  /* Accent utk ikon/border kecil */
+  --accent: var(--gold-600);
+  --text: var(--ink-700);
+
+  /* Gradients & shadows (maroon) */
+  --grad-gold:      linear-gradient(90deg, var(--gold-700) 0%, var(--gold-300) 50%, var(--gold-700) 100%);
+  --grad-gold-vert: linear-gradient(180deg, var(--gold-200) 0%, var(--gold-600) 100%);
+  --shadow-1: 0 10px 24px rgba(122,31,51,.06);
+  --shadow-2: 0 14px 36px rgba(122,31,51,.10);
+}
+
+.theme-modern{
+  --grad-heading:      linear-gradient(90deg, #7a2b39 0%, #e69ab0 50%, #7a2b39 100%);
+  --grad-heading-vert: linear-gradient(180deg, #f3c1cf 0%, #7a2b39 100%);
+}
+
+/* Overlay kiri elegan */
+.theme-modern .leftOverlay{
+  background: linear-gradient(180deg, rgba(17,24,39,.10), rgba(17,24,39,.35));
+}
+
+/* Heading & label: maroon look */
+.theme-modern .topLabel{ color: var(--gold-600); letter-spacing:.24em; }
+.theme-modern .goldNames,
+.theme-modern .coupleHeading,
+.theme-modern .galleryTitle,
+.theme-modern .panelTitle,
+.theme-modern .dateCardTitle,
+.theme-modern .rsvpTitle,
+.theme-modern .wishesTitle{
+  text-shadow: 0 0 18px rgba(156,47,69,.20);
+}
+
+/* Mid toolbar – glassy pill */
+.theme-modern .midToolbar{
+  background: rgba(255,255,255,.75);
+  box-shadow: var(--shadow-1);
+  backdrop-filter: blur(6px);
+}
+.theme-modern .midToolbar button{
+  border-color: rgba(156,47,69,.45);
+  color: var(--accent);
+}
+.theme-modern .midToolbar button:hover{ background:#FFEBF1; color:#5a1424; }
+
+/* Gallery */
+.theme-modern .gallerySection{ background: var(--panel-bg); border-color: var(--line); }
+.theme-modern .gallerySection.story .storyDots button{ background: var(--line); opacity:.45; }
+.theme-modern .gallerySection.story .storyDots button.is-active{ opacity:1; }
+
+/* Date/Location – tombol outline tipis */
+.theme-modern .dateCard{ background:#fff; border-color: var(--line); }
+.theme-modern .dateLine,
+.theme-modern .datePlace,
+.theme-modern .panelSub,
+.theme-modern .rsvpDesc,
+.theme-modern .inviteList li,
+.theme-modern .locationAddress{ color:#5B6879; }
+.theme-modern .dateBtn{
+  border-color: rgba(156,47,69,.45);
+  color:#5a1424;
+  box-shadow:none;
+}
+.theme-modern .dateBtn:hover{ box-shadow: 0 10px 26px rgba(156,47,69,.18); }
+
+/* RSVP */
+.theme-modern .rsvpSection{
+  background: linear-gradient(180deg, rgba(255,240,245,.55), rgba(255,255,255,0));
+}
+.theme-modern .rsvpBtn{
+  background: linear-gradient(90deg,#9C2F45 0%, #E09AAF 100%);
+  box-shadow: 0 12px 28px rgba(156,47,69,.28);
+}
+
+/* Gift & Wishes tombol */
+.theme-modern .giftSubmit,
+.theme-modern .wishSubmit{
+  background: linear-gradient(90deg,#9C2F45 0%, #B8475D 100%);
+}
+
+/* Music button */
+.theme-modern .musicBtn{
+  border-color:#f0d9df; color: var(--accent);
+  box-shadow: 0 8px 22px rgba(17,24,39,.10); backdrop-filter: blur(4px);
+}
+.theme-modern .musicBtn:hover{ background:#FFF0F4; }
+
+/* Confetti warna maroon–pink */
+.theme-modern .confetti:nth-child(3n)     { background:#F6C6D4; }
+.theme-modern .confetti:nth-child(3n + 1) { background:#FBE6EE; }
+.theme-modern .confetti:nth-child(3n + 2) { background:#B8475D; }
+
+/* Fallback bg kanan bila tak pakai gambar */
+.theme-modern .split.right{
+  background-image: var(--modern-fallback, linear-gradient(180deg,#ffffff 0%, #FFEFF4 100%));
+  background-size: cover; background-position: center;
+}

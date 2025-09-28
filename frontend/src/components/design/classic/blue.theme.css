@@ -1,0 +1,213 @@
+/* ===== THEME: CLASSIC BLUE (elegan & tidak monoton) ===== */
+.theme-classic{
+  /* Palet biru (menggantikan token gold) */
+  --gold-700:#3c6ba6;   /* deep blue */
+  --gold-600:#4f86c6;   /* accent */
+  --gold-500:#789fd6;   /* soft */
+  --gold-300:#b5cbee;   /* tint */
+  --gold-200:#d5e3f6;
+  --gold-100:#eaf3fb;
+
+  /* Palet teks untuk tipografi (baru) */
+  --blue-heading: #1f3350; /* judul besar: navy gelap */
+  --blue-script:  #3c6ba6; /* nama/script: biru elegan */
+  --blue-detail:  #2c456a; /* subjudul, lokasi, tanggal */
+  --blue-muted:   #5a6b83; /* teks pendukung */
+
+  /* Aksen ikon/tombol kecil */
+  --accent: var(--gold-600);
+
+  /* Body text default */
+  --ink-700:#1f2a3a;
+
+  /* Permukaan & garis */
+  --panel-bg: linear-gradient(180deg,#ffffff 0%, #eaf3fb 100%);
+  --line: rgba(63,103,160,.30);
+  --bg-200: rgba(255,255,255,.92);
+
+  /* Gradien & bayangan (tetap biru) */
+  --grad-gold:      linear-gradient(90deg, var(--gold-700) 0%, var(--gold-300) 50%, var(--gold-700) 100%);
+  --grad-gold-vert: linear-gradient(180deg, var(--gold-200) 0%, var(--gold-600) 100%);
+  --shadow-1: 0 10px 28px rgba(79,134,198,.10);
+  --shadow-2: 0 14px 36px rgba(79,134,198,.12);
+
+  /* Ukuran kartu seragam */
+  --card-max: 760px;
+  --card-pad: 24px;
+  --card-radius: 22px;
+
+  /* (opsional) font heading klasik */
+  --font-heading: "Cormorant Garamond", serif;
+}
+
+.theme-classic{
+  --grad-heading:      linear-gradient(90deg, #2b4e7f 0%, #b5cbee 50%, #2b4e7f 100%);
+  --grad-heading-vert: linear-gradient(180deg, #d5e3f6 0%, #3c6ba6 100%);
+}
+
+/* Tambahkan font ini di index.html:
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+*/
+
+/* Overlay kiri kebiruan */
+.theme-classic .leftOverlay{
+  background: linear-gradient(180deg, rgba(10,24,61,.18), rgba(10,24,61,.45));
+}
+
+/* ------------ Tipografi: variasi warna biru yang elegan ------------ */
+
+/* Default judul panel: biru elegan (bukan gradient) */
+.theme-classic .panelTitle,
+.theme-classic .dateCardTitle,
+.theme-classic .wishesTitle,
+.theme-classic .galleryTitle{
+  background: none;
+  -webkit-background-clip: border-box; /* prefix untuk kompatibilitas */
+  background-clip: border-box;         /* standard */
+  color: var(--blue-heading);
+  text-shadow: none;
+}
+
+/* ——— Samakan header kartu tanggal dengan header lain ——— */
+.theme-classic .dateCardTitle{
+  font-family: var(--font-heading, "Cormorant Garamond", serif);
+  font-weight: 700;
+  font-size: clamp(26px, 4.5vw, 34px);
+  line-height: 1.2;
+  letter-spacing: .2px;
+  text-align: center;
+  margin: 0 0 12px;
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  color: var(--blue-heading);
+  text-shadow: none;
+}
+
+
+/* OVERRIDE KHUSUS: Gift & Wishes harus besar + script + gradient biru */
+.theme-classic .giftCard .panelTitle,
+.theme-classic .wishesTitle{
+  font-family: var(--font-script);
+  font-weight: 700;
+  font-size: clamp(36px, 6.5vw, 60px);
+  line-height: 1.1;
+  text-align: center;
+  margin: 0 0 6px;
+  background: var(--grad-heading);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 14px rgba(79,134,198,.12);
+}
+
+/* Nama pasangan / heading script */
+.theme-classic .goldNames,
+.theme-classic .coupleHeading{
+  background: none;
+  color: var(--blue-script);
+  text-shadow: 0 0 14px rgba(79,134,198,.12);
+}
+
+/* Label kecil di hero, teks tanggal pendek, highlight IG/city */
+.theme-classic .topLabel,
+.theme-classic .dateText,
+.theme-classic .ig,
+.theme-classic .city{
+  color: var(--accent);
+}
+
+/* Detail: baris tanggal, tempat, subheading, RSVP desc, alamat lokasi */
+.theme-classic .dateLine,
+.theme-classic .datePlace,
+.theme-classic .panelSub,
+.theme-classic .rsvpDesc,
+.theme-classic .inviteList li,
+.theme-classic .locationAddress{
+  color: var(--blue-detail);
+}
+
+/* Teks pendukung / body kecil */
+.theme-classic .sectionCard,
+.theme-classic .panelCard,
+.theme-classic .giftCard,
+.theme-classic .wishesCard{
+  color: var(--blue-muted);
+}
+
+/* Toolbar tengah & ikon */
+.theme-classic .midToolbar{ background: rgba(255,255,255,.88); box-shadow: 0 10px 24px rgba(79,134,198,.15); }
+.theme-classic .midToolbar button{ border-color: var(--accent); color: var(--accent); }
+.theme-classic .midToolbar button:hover{ background:#eaf3fb; color:#0f1c2a; }
+
+/* Kartu/section seragam */
+.theme-classic .sectionCard,
+.theme-classic .panelCard,
+.theme-classic .giftCard,
+.theme-classic .wishesCard,
+.theme-classic .datePages .dateCard,
+.theme-classic .locationSection .mapCard{
+  width:min(var(--card-max), 94vw);
+  max-width:var(--card-max);
+  margin-inline:auto;
+  padding:var(--card-pad);
+  border-radius:var(--card-radius);
+  background:var(--bg-200);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-2);
+  box-sizing:border-box;
+}
+
+/* Gallery */
+.theme-classic .gallerySection{
+  width:min(var(--card-max), 94vw);
+  max-width:var(--card-max);
+  margin-inline:auto;
+  border-radius:var(--card-radius);
+  background:var(--panel-bg);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-1);
+  overflow:hidden;
+}
+.theme-classic .gallerySection.story .storyDots button{ background: var(--accent); opacity:.35; }
+.theme-classic .gallerySection.story .storyDots button.is-active{ opacity:1; }
+
+/* Date/Location buttons */
+.theme-classic .dateCard{ background:#fff; border-color: var(--line); }
+.theme-classic .dateBtn{
+  border-color: var(--gold-600);
+  color:#18324d;
+  box-shadow:none;
+}
+.theme-classic .dateBtn:hover{ box-shadow: 0 10px 26px rgba(63,103,160,.18); }
+
+/* RSVP */
+.theme-classic .rsvpSection{
+  background: linear-gradient(180deg, rgba(234,243,251,.55), rgba(255,255,255,0));
+}
+.theme-classic .rsvpBtn{
+  background: linear-gradient(90deg,#3c6ba6 0%, #b5cbee 100%);
+  box-shadow: 0 12px 28px rgba(79,134,198,.28);
+}
+
+/* Gift & Wishes tombol */
+.theme-classic .giftSubmit,
+.theme-classic .wishSubmit{
+  background: linear-gradient(90deg,#3c6ba6 0%, #789fd6 100%);
+}
+
+/* Bank card aksen */
+.theme-classic .bankHead{ color: var(--accent); }
+
+/* Music button */
+.theme-classic .musicBtn{
+  border-color:#e1e7f0; color: var(--accent);
+  box-shadow: 0 8px 22px rgba(79,134,198,.18);
+}
+.theme-classic .musicBtn:hover{ background:#f2f6fb; }
+
+/* Confetti */
+.theme-classic .confetti:nth-child(3n)     { background:#b5cbee; }
+.theme-classic .confetti:nth-child(3n + 1) { background:#eaf3fb; }
+.theme-classic .confetti:nth-child(3n + 2) { background:#4f86c6; }
+
